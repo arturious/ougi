@@ -1,0 +1,6 @@
+.DS_Store
+cli/.build/
+cli/.swiftpm/
+extension/node_modules/
+extension/dist/
+extension/raycast-env.d.ts

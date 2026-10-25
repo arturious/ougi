@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  cli:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: swift build -c release
+        working-directory: cli
+      - name: Smoke test
+        run: .build/release/ougi version && (.build/release/ougi read || true) # CI VMs may have no SMC
+        working-directory: cli
+
+  extension:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: extension
+      - run: npx ray build -e dist
+        working-directory: extension
