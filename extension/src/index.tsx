@@ -221,10 +221,8 @@ function FanDetail({ fan, daemon, control }: { fan: Fan; daemon?: DaemonInfo; co
     <List.Item.Detail
       metadata={
         <M>
-          <M.Label
-            title={`Fan ${fan.id + 1}`}
-            text={fan.actual > 0 ? `${rpm(fan.actual)} · ${percentOf(fan)}%` : "Stopped"}
-          />
+          <M.Label title={`Fan ${fan.id + 1}`} text={fan.actual > 0 ? rpm(fan.actual) : "Stopped"} />
+          {fan.actual > 0 && <M.Label title="Level" text={`${percentOf(fan)}%`} />}
           <M.TagList title="Mode">
             <M.TagList.Item text={fan.manual ? "Manual" : "Auto"} color={fan.manual ? Color.Orange : Color.Green} />
           </M.TagList>
