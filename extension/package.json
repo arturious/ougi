@@ -4,7 +4,7 @@
   "title": "Ougi",
   "description": "Monitor every Mac temperature sensor and fan speed, and control the fans with overheat protection",
   "icon": "icon.png",
-  "author": "local",
+  "author": "arturious",
   "categories": [
     "System"
   ],
